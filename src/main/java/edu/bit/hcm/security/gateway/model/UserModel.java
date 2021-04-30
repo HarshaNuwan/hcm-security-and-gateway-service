@@ -9,9 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import edu.bit.hcm.UserDTO;
-import edu.bit.hcm.security.gateway.entity.CustomerEntity;
 import edu.bit.hcm.security.gateway.entity.UserEntity;
-import edu.bit.hcm.security.gateway.repository.CustomerRepository;
 import edu.bit.hcm.security.gateway.repository.UserRepository;
 import edu.bit.hcm.wrapper.UserDTOListWrapper;
 import io.jsonwebtoken.lang.Collections;
@@ -20,9 +18,6 @@ import io.jsonwebtoken.lang.Collections;
 public class UserModel {
 	@Autowired
 	private UserRepository userRepository;
-	
-	@Autowired
-	private CustomerRepository customerRepository;
 	
 	public void userSignUp(UserEntity user) throws Exception{
 		//Get current system date time as the user account created date

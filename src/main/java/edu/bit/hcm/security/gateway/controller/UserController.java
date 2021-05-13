@@ -65,7 +65,9 @@ public class UserController {
 
 			final String token = jwtTokenUtil.generateToken(userDetails);
 
-			return ResponseEntity.ok(new JwtResponse(token));
+			JwtResponse jwtResponse = new JwtResponse(token);
+			jwtResponse.setDto(userModel.findUserByUserName(authenticationRequest.getUsername()));
+			return ResponseEntity.ok(jwtResponse);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());

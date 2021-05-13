@@ -16,7 +16,7 @@ public class UserEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "user_id")
-	private Long userId;
+	private int userId;
 
 	private String username;
 	private String password;
@@ -28,11 +28,14 @@ public class UserEntity {
 	@Column(name = "user_role_id")
 	private Integer userRoleId;
 
+	@Column(name = "doctor_id")
+	private Integer doctorId;
+
 	public UserEntity() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public UserEntity(Long userId, String username, String password, Timestamp userCreateDateTimeStamp, boolean active,
+	public UserEntity(int userId, String username, String password, Timestamp userCreateDateTimeStamp, boolean active,
 			Integer userRoleId) {
 		super();
 		this.userId = userId;
@@ -43,11 +46,23 @@ public class UserEntity {
 		this.userRoleId = userRoleId;
 	}
 
-	public Long getUserId() {
+	public UserEntity(int userId, String username, String password, Timestamp userCreateDateTimeStamp, boolean active,
+			Integer userRoleId, Integer doctorId) {
+		super();
+		this.userId = userId;
+		this.username = username;
+		this.password = password;
+		this.userCreateDateTimeStamp = userCreateDateTimeStamp;
+		this.active = active;
+		this.userRoleId = userRoleId;
+		this.doctorId = doctorId;
+	}
+
+	public int getUserId() {
 		return userId;
 	}
 
-	public void setUserId(Long userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 
@@ -89,6 +104,14 @@ public class UserEntity {
 
 	public void setUserRoleId(Integer userRoleId) {
 		this.userRoleId = userRoleId;
+	}
+
+	public Integer getDoctorId() {
+		return doctorId;
+	}
+
+	public void setDoctorId(Integer doctorId) {
+		this.doctorId = doctorId;
 	}
 
 }
